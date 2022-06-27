@@ -1,6 +1,6 @@
 const pokemon = ['charmander', 'bulbasaur', 'squirtle',]
 
-const pokemonIDs = ['001', '002', '003', '257', '700',]
+const pokemonIDs = ['001', '004', '007',]
 
 // DOM = Document Object Model
 // loop over every ID
@@ -11,9 +11,10 @@ const pokemonIDs = ['001', '002', '003', '257', '700',]
 pokemonIDs.map((id) => {
     let imgUrl = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${id}.png`
     console.log('img url', imgUrl)
-    let img = document.createElement('img')
+    let div = document.createElement('div') //adding a div to house the img element
+    div.setAttribute('class', 'pokemon-card') //setting the class of the div
+    let img = document.createElement('img') // creating the img element itself
     img.src = imgUrl
-    img.setAttribute('height', '100px')
-    img.setAttribute('width', '100px')
-    document.body.append(img)
+    div.append(img)
+    document.body.append(div)
 })
