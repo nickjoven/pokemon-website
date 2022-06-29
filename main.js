@@ -4,6 +4,13 @@ const pokemon = [
     { name: 'Squirtle', id: '007' },
 ]
 
+function alertNew() {
+    alert("This is up to date")
+    
+}
+
+alertNew()
+
 const userRoster = []
 
 const containerDiv = document.querySelector('#container')
