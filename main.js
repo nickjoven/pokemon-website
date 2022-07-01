@@ -4,12 +4,12 @@ const pokemon = [
     { name: 'Squirtle', id: '007' },
 ]
 
-function alertNew() {
-    alert("This is up to date")
+// function alertNew() {
+//     alert("This is up to date")
     
-}
+// }
 
-alertNew    ()
+// alertNew    ()
 
 const userRoster = []
 
@@ -22,6 +22,7 @@ const create = (elementType) => {
 }
 
 newBtn.addEventListener('click', async () => {
+    if (userRoster.length >= 6) { return }
     let num = prompt('ENTER A POKEMON NUMBER')
     console.log('Number entered', num)
     let imgUrl = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${num}.png`
@@ -40,8 +41,12 @@ newBtn.addEventListener('click', async () => {
     let img = document.createElement('img')
     img.setAttribute('src', imgUrl)
     img.setAttribute('class', 'roster-img')
+    let removeBtn = document.createElement('button')
+    removeBtn.innerText = "X"
+    let btnDiv = document.createElement('div')
+    btnDiv.append(removeBtn)
     let position = document.querySelector(`#pokemon-${userRoster.length + 1}`)
-    position.append(img, h3)
+    position.append(img, h3, btnDiv)
     position.addEventListener('click', () => {
         console.log('audio', audioUrl)
         audio.play();
@@ -51,7 +56,9 @@ newBtn.addEventListener('click', async () => {
             position.classList.remove('animate__shakeX')
             // div.classList.remove('pokemon-card-flash')
         }, 1300)
-
+    removeBtn.addEventListener('click', (event) => {
+        console.log(event.target.parentElement)
+    })
     })
     userRoster.push(num)
 })
